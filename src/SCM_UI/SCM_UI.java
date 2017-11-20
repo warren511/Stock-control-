@@ -1,4 +1,4 @@
-//created log in form processor gdfgsdhdhsghtyrt
+//create manager area and ask about things
 package SCM_UI;
 
 import javax.swing.JOptionPane;
