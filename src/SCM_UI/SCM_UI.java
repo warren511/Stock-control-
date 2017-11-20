@@ -6,17 +6,13 @@ import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
 public class SCM_UI extends javax.swing.JFrame {
-
     /**
      * Creates new form SCM_UI
      */
     public SCM_UI() {
         initComponents();
     }
-
-    /**
-     * This method is called from within the constructor to initialize the form.
-     */
+    // This method is called from within the constructor to initialize the form.
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -42,18 +38,7 @@ public class SCM_UI extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel3.setText("Password");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-
         enterBtn.setText("Enter");
-        enterBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                enterBtnMouseClicked(evt);
-            }
-        });
         enterBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 enterBtnActionPerformed(evt);
@@ -136,14 +121,6 @@ public class SCM_UI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
-    private void enterBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_enterBtnMouseClicked
-        JOptionPane.showMessageDialog(null,"Clicked!");
-    }//GEN-LAST:event_enterBtnMouseClicked
-
     private void exitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitBtnActionPerformed
         System.exit(0);
     }//GEN-LAST:event_exitBtnActionPerformed
@@ -161,13 +138,18 @@ public class SCM_UI extends javax.swing.JFrame {
         if (username.contains("staff") && password.contains("0000")){ 
             jTextField1.setText(null);
             jPasswordField1.setText(null);
-            JOptionPane.showMessageDialog(null,"Staff Logged in1");
+            JOptionPane.showMessageDialog(null,"Staff Logged in!");
+            staffArea staffArea = new staffArea();
+            staffArea.setVisible(true);
+            dispose();
+            
+            
         } //change this so that once logged in you view your area
         else if (username.contains("manager") && password.contains("1111")){
             JOptionPane.showMessageDialog(null,"Manager Logged in!");
         } //change this so that oncve you logged in you view your area do this tomorrow
         else{
-            JOptionPane.showMessageDialog(null,"Wrong Log In Details. Please contact Service Administrator");
+            JOptionPane.showMessageDialog(null,"Incorrect Log In Details. Please contact Service Administrator");
         }
     }//GEN-LAST:event_enterBtnActionPerformed
 
@@ -205,6 +187,7 @@ public class SCM_UI extends javax.swing.JFrame {
             @Override
             public void run() {
                 new SCM_UI().setVisible(true);
+                
             }
         });
     }
