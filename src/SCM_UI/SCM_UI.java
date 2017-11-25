@@ -5,6 +5,7 @@ import javax.swing.JOptionPane;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 
+
 public class SCM_UI extends javax.swing.JFrame {
     /**
      * Creates new form SCM_UI
@@ -180,9 +181,10 @@ public class SCM_UI extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(SCM_UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-
+        //</editor-fold//
         /* Create and display the form */
+    
+        
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
