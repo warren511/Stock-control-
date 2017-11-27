@@ -29,7 +29,7 @@ public class Enter_Record extends javax.swing.JFrame {
      */
     public Enter_Record() {
         initComponents();
-     
+   
     }
 
     /**
@@ -182,11 +182,16 @@ public class Enter_Record extends javax.swing.JFrame {
             String sql="Delete from APP.CURRENT_STOCK where ID ="+idTxt.getText();
             Statement add=myConObj.createStatement();
             add.executeUpdate(sql);
+            
+            String notify = (sbTxt.getText()+" removed "+itemTxt.getText()+"\n");
+            nots.append(notify); //this sets the notify staff event
+            
             idTxt.setText("");
             itemTxt.setText("");
             qtyTxt.setText("");
             adTxt.setText("");
             sbTxt.setText("");
+            
             }
         
         catch(SQLException E){
@@ -197,7 +202,6 @@ public class Enter_Record extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
         idTxt.setText(null);
         itemTxt.setText(null);
         qtyTxt.setText(null);
