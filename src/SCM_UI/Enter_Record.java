@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
 
@@ -170,8 +171,39 @@ public class Enter_Record extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            String notify = ("Done"+"\n");
-            nots.append(notify);                                             
+        try{
+            myConObj = DriverManager.getConnection("jdbc:derby://localhost:1527/SCM_SYSTEM");
+            myStatObj = myConObj.createStatement();
+            myResObj=myStatObj.executeQuery("Select QUANTITY_REMAINING from APP.CURRENT_STOCK where ID = "+idTxt.getText());
+            while (myResObj.next()){
+                String oldvalue = myResObj.getString("QUANTITY_REMAINING");
+                int intoldvalue = Integer.parseInt(oldvalue);
+                int x = Integer.parseInt(qtyTxt.getText());
+                int newvalue = intoldvalue+x;
+                String outputvalue = Integer.toString(newvalue);
+                
+                Statement update=myConObj.createStatement();
+            
+                int id = Integer.parseInt(idTxt.getText());
+            
+       
+            
+                String sql="Update APP.CURRENT_STOCK set ITEM = '"+itemTxt.getText()+"', QUANTITY_REMAINING = '"+
+                        outputvalue+"', ARRIVAL_DATE = '"+adTxt.getText()+"', SIGNED_BY = '"+sbTxt.getText()+"' where ID = "+id;
+             
+                update.executeUpdate(sql);
+                String notify = (sbTxt.getText()+" added delivery record of "+ itemTxt.getText()+" on "+ adTxt.getText()+"\n");
+                nots.append(notify); 
+            }
+            
+            
+           
+        }
+        catch(SQLException E){
+            E.printStackTrace();
+        }
+        viewDB();
+                                                        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
