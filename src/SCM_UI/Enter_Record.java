@@ -24,6 +24,7 @@ public class Enter_Record extends javax.swing.JFrame {
     Connection myConObj = null;
     Statement myStatObj = null;
     ResultSet myResObj = null;
+    //ResultSet myResObj2 = null;
     
     /**
      * Creates new form Enter_Record
@@ -175,6 +176,7 @@ public class Enter_Record extends javax.swing.JFrame {
             myConObj = DriverManager.getConnection("jdbc:derby://localhost:1527/SCM_SYSTEM");
             myStatObj = myConObj.createStatement();
             myResObj=myStatObj.executeQuery("Select QUANTITY_REMAINING from APP.CURRENT_STOCK where ID = "+idTxt.getText());
+            //myResObj2=myStatObj.executeQuery("");
             while (myResObj.next()){
                 String oldvalue = myResObj.getString("QUANTITY_REMAINING");
                 int intoldvalue = Integer.parseInt(oldvalue);
@@ -185,13 +187,25 @@ public class Enter_Record extends javax.swing.JFrame {
                 Statement update=myConObj.createStatement();
             
                 int id = Integer.parseInt(idTxt.getText());
-            
-       
-            
+
                 String sql="Update APP.CURRENT_STOCK set ITEM = '"+itemTxt.getText()+"', QUANTITY_REMAINING = '"+
                         outputvalue+"', ARRIVAL_DATE = '"+adTxt.getText()+"', SIGNED_BY = '"+sbTxt.getText()+"' where ID = "+id;
-             
+
                 update.executeUpdate(sql);
+                
+                if (newvalue >= 5 && newvalue <= 10){
+                    String sql2="Update APP.CURRENT_STOCK set STATUS = 'Medium' where ID = "+id;
+                    update.executeUpdate(sql2);
+                }
+                else if (newvalue >= 11){
+                    String sql3="Update APP.CURRENT_STOCK set STATUS = 'High' where ID = "+id;
+                    update.executeUpdate(sql3);
+                }
+                else{
+                    String sql4="Update APP.CURRENT_STOCK set STATUS = 'Low' where ID ="+ id ;
+                    update.executeUpdate(sql4);
+                }
+                
                 String notify = (sbTxt.getText()+" added delivery record of "+ itemTxt.getText()+" on "+ adTxt.getText()+"\n");
                 nots.append(notify); 
             }

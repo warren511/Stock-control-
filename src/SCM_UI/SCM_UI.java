@@ -142,12 +142,15 @@ public class SCM_UI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null,"Staff Logged in!");
             staffArea staffArea = new staffArea();
             staffArea.setVisible(true);
-            dispose();
-            
-            
+            dispose();  
         } //change this so that once logged in you view your area
         else if (username.contains("manager") && password.contains("1111")){
+            jTextField1.setText(null);
+            jPasswordField1.setText(null);
             JOptionPane.showMessageDialog(null,"Manager Logged in!");
+            managerArea managerArea = new managerArea();
+            managerArea.setVisible (true);
+            dispose();
         } //change this so that oncve you logged in you view your area do this tomorrow
         else{
             JOptionPane.showMessageDialog(null,"Incorrect Log In Details. Please contact Service Administrator");
