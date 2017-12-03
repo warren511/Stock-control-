@@ -11,6 +11,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartFrame;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.renderer.category.BarRenderer;
+import org.jfree.data.jdbc.JDBCCategoryDataset;
+
 
 /**
  *
@@ -211,6 +219,30 @@ public class managerArea extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        try{
+           myConObj = DriverManager.getConnection("jdbc:derby://localhost:1527/SCM_SYSTEM");
+           String sql = "Select ITEM, PROFIT, PREVIOUS_WEEK_PROFIT from APP.STOCK_REPORT";
+           //String sql1 = "Select ITEM, PREVIOUS_WEEK_PROFIT from APP.STOCK_REPORT";
+           JDBCCategoryDataset dataset = new JDBCCategoryDataset(myConObj, sql);
+           //JDBCCategoryDataset dataset1= new JDBCCategoryDataset(myConObj, sql1);
+           JFreeChart chart = ChartFactory.createLineChart("Weekly Profit Comparison Pink=Current, Blue=Previous","Item","Weekly Profit (£)", dataset, PlotOrientation.VERTICAL, false, true, true);
+           
+           BarRenderer renderer = null;
+           CategoryPlot plot = null;
+           renderer = new BarRenderer();
+           ChartFrame frame = new ChartFrame("Weekly Profit Comparison",chart);
+           frame.setVisible(true);
+           frame.setSize(400,650);
+           
+           
+           
+           
+           
+           
+        }
+        catch (SQLException E){
+            E.printStackTrace();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
