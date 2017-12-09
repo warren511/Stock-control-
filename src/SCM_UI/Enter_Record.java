@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import javax.swing.JOptionPane;
 import net.proteanit.sql.DbUtils;
+import static SCM_UI.managerArea.manNots;
 
 /**
  *
@@ -231,6 +232,7 @@ public class Enter_Record extends javax.swing.JFrame {
             
             String notify = (sbTxt.getText()+" removed "+itemTxt.getText()+"\n");
             nots.append(notify); //this sets the notify staff event
+            manNots.append(notify);//this sets the notify staff event in the manager's area
             
             idTxt.setText("");
             itemTxt.setText("");

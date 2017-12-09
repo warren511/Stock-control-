@@ -191,8 +191,9 @@ public class SCM_UI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new SCM_UI().setVisible(true);
-                
+                SCM_UI scm_ui = new SCM_UI();
+                //new SCM_UI().setVisible(true);
+                scm_ui.setVisible(true);
             }
         });
     }

@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package SCM_UI;
+import static SCM_UI.staffArea.nots;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -73,11 +74,10 @@ public class managerArea extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         logOutBtn = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        manNots = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(911, 405));
 
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setText("Stock Control Management System v1.0 - Manager Area");
@@ -150,9 +150,9 @@ public class managerArea extends javax.swing.JFrame {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane3.setViewportView(jTextArea1);
+        manNots.setColumns(20);
+        manNots.setRows(5);
+        jScrollPane3.setViewportView(manNots);
 
         jLabel3.setText("Messages:");
 
@@ -247,6 +247,8 @@ public class managerArea extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Edit_Inventory edit_inventory = new Edit_Inventory();
+        edit_inventory.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -259,6 +261,9 @@ public class managerArea extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
+        Order_Items order_items = new Order_Items();
+        order_items.setVisible(true);
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
@@ -297,11 +302,12 @@ public class managerArea extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(managerArea.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new managerArea().setVisible(true);
+                
             }
         });
     }
@@ -317,8 +323,8 @@ public class managerArea extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton logOutBtn;
+    public static javax.swing.JTextArea manNots;
     public static javax.swing.JTable stockItemsDB;
     public static javax.swing.JTable stockReportDB;
     // End of variables declaration//GEN-END:variables
