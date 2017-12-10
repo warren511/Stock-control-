@@ -136,12 +136,12 @@ public class SCM_UI extends javax.swing.JFrame {
         String username = jTextField1.getText();
         String password = jPasswordField1.getText();
         
-        if (username.contains("staff") && password.contains("0000")){ 
+        if (username.contains("staff") && password.contains("0000")){ // function will check the correct log in details 
             jTextField1.setText(null);
-            jPasswordField1.setText(null);
-            JOptionPane.showMessageDialog(null,"Staff Logged in!");
-            staffArea staffArea = new staffArea();
-            staffArea.setVisible(true);
+            jPasswordField1.setText(null);  //reset text fields in the user interface
+            JOptionPane.showMessageDialog(null,"Staff Logged in!"); //show the notification event that the user has logged in
+            staffArea staffArea = new staffArea(); //initiate the correct event broker 
+            staffArea.setVisible(true); //set UI visible 
             dispose();  
         } //change this so that once logged in you view your area
         else if (username.contains("manager") && password.contains("1111")){
